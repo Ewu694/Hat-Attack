@@ -22,7 +22,7 @@ public class Mole : MonoBehaviour
     private Vector2 startPosition = new Vector2(0f, -2.56f);
     private Vector2 endPosition = Vector2.zero;
 
-    [Header("Pup-up Duration")]//duration a hat shows up for
+    [Header("Pop-up Duration")]//duration a hat shows up for
     public float showDuration = 0.5f;
     public float duration = 1f;
 
@@ -37,9 +37,9 @@ public class Mole : MonoBehaviour
     public enum HatType { regular, tank, rare, cat };
     private HatType hatType;
     public float tankRate = 0.25f;//how often the tank hat will spawn
-    private float rareRate = 1f;//how often the rare hat will spawn
+    public float rareRate = 1f;//how often the rare hat will spawn
     public float catRate = 0f;//how often the cat will spawn
-    private int lives;//how much hits the tank hat can take
+    public int lives = 2;//how much hits the tank hat can take
     private int hatIndex = 0;
 
     public void SetIndex(int index)
