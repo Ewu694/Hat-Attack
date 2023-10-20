@@ -37,7 +37,7 @@ public class Mole : MonoBehaviour
     public enum HatType { regular, tank, rare, cat };
     private HatType hatType;
     public float tankRate = 0.25f;//how often the tank hat will spawn
-    private float rareRate = 1f;//how often the rare hat will spawn
+    private float rareRate = 0.2f;//how often the rare hat will spawn
     public float catRate = 0f;//how often the cat will spawn
     private int lives;//how much hits the tank hat can take
     private int hatIndex = 0;
@@ -185,7 +185,7 @@ public class Mole : MonoBehaviour
             spriteRenderer.sprite = hat2;
             lives = 2;//2 can be changed for however many hits we wanna use for the mole
         }
-        else if (random == rareRate)
+        else if (random < rareRate)
         {
             hatType = HatType.rare;
             spriteRenderer.sprite = hat3;

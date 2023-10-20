@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         //to be implemented by Joshua
         score += addscore;
-        ScoreUI.text = "Score:" + score.ToString();
+        ScoreUI.text = "Score: " + score.ToString();
         currentHats.Remove(hats[hatIndex]);
     }
 
