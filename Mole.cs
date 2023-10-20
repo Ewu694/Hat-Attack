@@ -37,7 +37,7 @@ public class Mole : MonoBehaviour
     public enum HatType { regular, tank, rare, cat };
     private HatType hatType;
     public float tankRate = 0.25f;//how often the tank hat will spawn
-    private float rareRate = 1f;//how often the rare hat will spawn
+    private float rareRate = 0.125f;//how often the rare hat will spawn
     public float catRate = 0f;//how often the cat will spawn
     private int lives;//how much hits the tank hat can take
     private int hatIndex = 0;
@@ -73,13 +73,13 @@ public class Mole : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (hittable)
+        if(hittable)
         {
             switch (hatType)
             {
                 case HatType.regular:
                     spriteRenderer.sprite = hatHit;
-                    gameManager.AddScore(hatIndex, 10);
+                    gameManager.AddScore(hatIndex);
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     hittable = false;
@@ -93,7 +93,6 @@ public class Mole : MonoBehaviour
                     else
                     {
                         spriteRenderer.sprite = hat2Hit;
-                        gameManager.AddScore(hatIndex, 25);
                         StopAllCoroutines();
                         StartCoroutine(QuickHide());
                         hittable = false;
@@ -101,7 +100,7 @@ public class Mole : MonoBehaviour
                     break;
                 case HatType.rare:
                     spriteRenderer.sprite = hat3Hit;
-                    gameManager.AddScore(hatIndex, 30);
+                    gameManager.AddScore(50);
                     StopAllCoroutines();
                     StartCoroutine(QuickHide());
                     hittable = false;
@@ -127,7 +126,7 @@ public class Mole : MonoBehaviour
     {
         transform.localPosition = start;//make sure the hat starts in the right positoin
         float elapsed = 0f;
-        while (elapsed < showDuration)
+        while(elapsed < showDuration)
         {
             transform.localPosition = Vector2.Lerp(start, end, elapsed / showDuration);
             boxCollider2D.offset = Vector2.Lerp(boxOffsetHidden, boxOffset, elapsed / showDuration);
@@ -140,7 +139,7 @@ public class Mole : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         elapsed = 0f;
-        while (elapsed < showDuration)//same loop for after the hat is hit and needs to be hidden again
+        while(elapsed < showDuration)//same loop for after the hat is hit and needs to be hidden again
         {
             transform.localPosition = Vector2.Lerp(end, start, elapsed / showDuration);
             boxCollider2D.offset = Vector2.Lerp(boxOffsetHidden, boxOffset, elapsed / showDuration);
@@ -163,7 +162,7 @@ public class Mole : MonoBehaviour
     private IEnumerator QuickHide()
     {
         yield return new WaitForSeconds(0.25f);
-        if (!hittable)
+        if(!hittable)
         {
             Hide();
         }
@@ -179,19 +178,19 @@ public class Mole : MonoBehaviour
     private void CreateNext()
     {
         float random = Random.Range(01, 1f);
-        if (random < tankRate)
+        if(random < tankRate)
         {
             hatType = HatType.tank;
             spriteRenderer.sprite = hat2;
             lives = 2;//2 can be changed for however many hits we wanna use for the mole
         }
-        else if (random == rareRate)
+        else if(random > rareRate)
         {
             hatType = HatType.rare;
             spriteRenderer.sprite = hat3;
             lives = 1;
         }
-        else if (random > catRate)
+        else if(random > catRate)
         {
             hatType = HatType.cat;
             spriteRenderer.sprite = cat;

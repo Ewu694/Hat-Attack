@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public float timeRemaining;
     private HashSet<Mole> currentHats = new HashSet<Mole>();
     private int score;
-    private bool playing = false;
+    public bool playing = false;
     public TextMeshProUGUI ScoreUI;
     public TextMeshProUGUI Timer;
 
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     {
         //to be implemented by Joshua
         score += addscore;
-        ScoreUI.text = "Score:" + score.ToString();
+        ScoreUI.text = "Score: " + score.ToString();
         currentHats.Remove(hats[hatIndex]);
     }
 
