@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Mol : MonoBehaviour {
+public class Mole : MonoBehaviour {
     [Header("Graphics")]
     [SerializeField] private Sprite hat;//regular hat
     [SerializeField] private Sprite hat2;//hat that can take 2 hits
