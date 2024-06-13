@@ -12,4 +12,4 @@ Programmers: Ewu694, justSass
 
 ## Tech Stack:
 - C#
-- Unity
+- Unity Game Engine
