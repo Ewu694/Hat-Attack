@@ -9,3 +9,7 @@ Game Designers: MichaelPoorun, DuSamLam <br>
 Artist: Crodriguez45 <br>
 Sound Designer: bgwustl <br>
 Programmers: Ewu694, justSass
+
+## Tech Stack:
+- C#
+- Unity
